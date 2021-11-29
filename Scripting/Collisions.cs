@@ -7,7 +7,7 @@ namespace cse210_project
     public class Collisions : Action
     {
         private List<Actor> _grunts;
-        private Actor _bullets;
+        private List<Actor> _bullets;
         private List<Actor> _masterchief;
         private PhysicsService _physicsService;
         AudioService audioService = new AudioService();
@@ -18,68 +18,69 @@ namespace cse210_project
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             _grunts = cast["grunts"];
-            _bullets = cast["bullets"][0];
+            _bullets = cast["bullets"];
             _masterchief = cast["MasterChief"];
             List<Actor> DeadGrunts = new List<Actor>();
+            List<Actor> UsedBullets = new List<Actor>();
 
-            //when get collisions
+            //when bullet hits
             foreach (Actor Grunt in _grunts)
             {
-                if (_physicsService.IsCollision(_bullets, Grunt))
+                foreach (Actor Bullet in _bullets)
                 {
-                    BounceActorsY(_bullets);
-                    DeadGrunts.Add(Grunt);
-                    audioService.PlaySound(Constants.SOUND_BOUNCE);
+                    if (_physicsService.IsCollision(Bullet, Grunt))
+                    {
+                        DeadGrunts.Add(Grunt);
+                    }
+                // moves grunts up and down
+                    if (Grunt.GetBottomEdge() >= Constants.MAX_Y)
+                    {
+                        BounceActorsY(Grunt);
+                    }
+                    if (Grunt.GetTopEdge() <= 0)
+                    {
+                        BounceActorsY(Grunt);
+                    }
                 }
             }
             foreach (Actor Grunt in DeadGrunts)
             {
                 cast["grunts"].Remove(Grunt);
             }
-            //paddle collisions
-            foreach (Actor Paddle in _masterchief)
+            //bullets
+            foreach (Bullet Bullet in _bullets)
             {
-                if (_physicsService.IsCollision(_bullets, Paddle))
+                if (Bullet.GetPosition().GetX() >= Constants.MAX_X - Constants.BULLET_WIDTH)
                 {
-                    BounceActorsY(_bullets);
-                    audioService.PlaySound(Constants.SOUND_BOUNCE);
-                    int x = _bullets.GetVelocity().GetX();
-                    int y = _bullets.GetVelocity().GetY();
-                    if (x > 0)
-                    {
-                        x += 1;
-                    }
-                    else
-                    {
-                        x -= 1;
-                    }
-                    if (y > 0)
-                    {
-                        y += 1;
-                    }
-                    else
-                    {
-                        y -= 1;
-                    }
-                    _bullets.SetVelocity(new Point(x, y));
+                    UsedBullets.Add(Bullet);
                 }
             }
-        }
+            foreach (Actor Bullet in UsedBullets)
+            {
+                cast["bullets"].Remove(Bullet);
+            }
+            //master chief gets shot
+            foreach (Actor MasterChief in _masterchief)
+            {
+                foreach (Actor Bullet in _bullets)
+                {
+                    if (_physicsService.IsCollision(Bullet, MasterChief))
+                    {
+                    
+                    }
+                }
 
-        private void BounceActorsX(Actor actor)
-        {
-            int x = actor.GetVelocity().GetX();
-            int y = actor.GetVelocity().GetY();
-            x *= -1;
-            actor.SetVelocity(new Point(x,y));
+            }
+            
         }
-        private void BounceActorsY(Actor actor)
-        {
-            int x = actor.GetVelocity().GetX();
-            int y = actor.GetVelocity().GetY();
-            y *= -1;
-            actor.SetVelocity(new Point(x,y));
-        }
+        //grunt movement
+            private void BounceActorsY(Actor actor)
+            {
+                int x = actor.GetVelocity().GetX();
+                int y = actor.GetVelocity().GetY();
+                y *= -1;
+                actor.SetVelocity(new Point(x,y));
+            }
         
     }
 }

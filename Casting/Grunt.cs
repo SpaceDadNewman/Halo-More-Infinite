@@ -4,15 +4,15 @@ using cse210_project.Casting;
 
 namespace cse210_project
 {
-    //was the brick class
     class Grunt : Actor
     {
         public Grunt(int x, int y)
         {
-            SetPosition(new Point(x,y));
-            SetImage(Constants.IMAGE_BRICK);
-            SetWidth(Constants.BRICK_WIDTH);
-            SetHeight(Constants.BRICK_HEIGHT);
+            SetPosition(new Point(Constants.MAX_X - Constants.GRUNT_WIDTH - 5,y));
+            SetImage(Constants.IMAGE_GRUNT);
+            SetWidth(Constants.GRUNT_WIDTH);
+            SetHeight(Constants.GRUNT_HEIGHT);
+            SetVelocity(new Point(0,3));
         }
     }
 }

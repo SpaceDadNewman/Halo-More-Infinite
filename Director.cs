@@ -19,6 +19,7 @@ namespace cse210_project
         AudioService audioService = new AudioService();
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
+        private InputService _inputservice = new InputService();
 
         public Director(Dictionary<string, List<Actor>> cast, Dictionary<string, List<Action>> script)
         {
@@ -32,7 +33,11 @@ namespace cse210_project
         public void Direct()
         {
             while (_keepPlaying)
-            {
+           {
+                if (_inputservice.Shoot())
+                {
+                    _cast["bullets"].Add(new Bullet(_cast["MasterChief"][0].GetX(),_cast["MasterChief"][0].GetY()));
+                }
                 CueAction("input");
                 CueAction("update");
                 CueAction("output");
@@ -41,11 +46,11 @@ namespace cse210_project
                 {
                     _keepPlaying = false;
                 }
-                if (_cast["balls"].Count == 0)
-                {
-                    _keepPlaying = false;
-                }
-                if (_cast["bricks"].Count == 0)
+                // if (_cast["bullets"].Count == 0)
+                // {
+                //     _keepPlaying = false;
+                // }
+                if (_cast["grunts"].Count == 0)
                 {
                     _keepPlaying = false;
                     audioService.PlaySound(Constants.SOUND_OVER);

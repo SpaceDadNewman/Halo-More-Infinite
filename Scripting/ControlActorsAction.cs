@@ -21,7 +21,7 @@ namespace cse210_project.Scripting
         {
             Point direction = _inputService.GetDirection();
             
-            Actor robot = cast["paddle"][0];
+            Actor robot = cast["MasterChief"][0];
 
             Point velocity = direction.Scale(Constants.PADDLE_SPEED);
             robot.SetVelocity(velocity);

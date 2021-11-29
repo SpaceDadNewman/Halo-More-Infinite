@@ -15,23 +15,28 @@ namespace cse210_project.Services
 
         }
 
-        public bool IsLeftPressed()
+        // public bool IsLeftPressed()
+        // {
+        //     return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_LEFT);
+        // }
+
+        // public bool IsRightPressed()
+        // {
+        //     return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_RIGHT);
+        // }
+        public bool IsUpPressed()
         {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_LEFT);
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_UP);
+        }
+        public bool IsDownPressed()
+        {
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_DOWN);
         }
 
-        public bool IsRightPressed()
+        public bool IsSpacePressed()
         {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_RIGHT);
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_SPACE);
         }
-        // public bool IsUpPressed()
-        // {
-        //     return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_UP);
-        // }
-        // public bool IsDownPressed()
-        // {
-        //     return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_DOWN);
-        // }
 
         /// <summary>
         /// Gets the direction asked for by the current key presses
@@ -42,27 +47,39 @@ namespace cse210_project.Services
             int x = 0;
             int y = 0;
 
-            if (IsLeftPressed())
-            {
-                x = -1;
-            }
+            // if (IsLeftPressed())
+            // {
+            //     x = -1;
+            // }
 
-            if (IsRightPressed())
+            // if (IsRightPressed())
+            // {
+            //     x = 1;
+            // }
+            
+            if (IsUpPressed())
             {
-                x = 1;
+                y = -1;
             }
             
-            // if (IsUpPressed())
-            // {
-            //     y = -1;
-            // }
-            
-            // if (IsDownPressed())
-            // {
-            //     y = 1;
-            // }
+            if (IsDownPressed())
+            {
+                y = 1;
+            }
             
             return new Point(x, y);
+        }
+
+        public bool Shoot()
+        {
+            if (IsSpacePressed())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>

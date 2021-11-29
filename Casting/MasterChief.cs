@@ -9,7 +9,7 @@ namespace cse210_project
     {
         public MasterChief()
         {
-            SetPosition(new Point(Constants.MAX_X / 2,Constants.MAX_Y - 25));
+            SetPosition(new Point(25, Constants.MAX_Y / 2));
             SetImage(Constants.IMAGE_PADDLE);
             SetWidth(Constants.PADDLE_WIDTH);
             SetHeight(Constants.PADDLE_HEIGHT);

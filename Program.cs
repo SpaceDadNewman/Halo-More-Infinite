@@ -8,26 +8,27 @@ namespace cse210_project
 {
     class Program
     {
+        InputService inputservice = new InputService();
         static void Main(string[] args)
         {
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
 
-            // Bricks
-            cast["Grunts"] = new List<Actor>();
+            // grunts
+            cast["grunts"] = new List<Actor>();
 
-            // TODO: line of grunts is placed
-
-            for(int grunts = Constants.MAX_X; grunts < Constants.MAX_X; grunts += Constants.BRICK_WIDTH + 10)
+            // grunt spawning
+            for(int grunts = 0; grunts < 10; grunts ++)
             {
-                cast["Grunts"].Add(new Grunt(grunts, 25));
+                cast["grunts"].Add(new Grunt(Constants.MAX_X - Constants.GRUNT_WIDTH, Constants.GRUNT_HEIGHT));
             }
 
             // The Ball (or balls if desired)
             cast["bullets"] = new List<Actor>();
 
             // TODO: Add your ball here
-            cast["bullets"].Add(new Bullet());
+            cast["bullets"].Add(new Bullet(25, Constants.MAX_Y / 2));
+            // cast["bullets"].Add(new Bullet(x,y));
 
             // The paddle
             cast["MasterChief"] = new List<Actor>();
@@ -56,9 +57,6 @@ namespace cse210_project
 
             Collisions collisions = new Collisions(physicsService);
             script["update"].Add(collisions);
-
-            // HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
-            // script["update"].Add(handleOffScreenAction);
 
             ControlActorsAction controlActorsAction = new ControlActorsAction(inputService);
             script["update"].Add(controlActorsAction);
