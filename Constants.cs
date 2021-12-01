@@ -21,7 +21,7 @@ namespace cse210_project
         public const string IMAGE_ENEMYBULLET = "./Assets/nerf_enemy.png";
 
         public const string SOUND_START = "./Assets/Halo_Start.wav";
-        public const string SOUND_SHOOT = "./Assets/boing.wav";
+        public const string SOUND_SHOOT = "./Assets/pew.wav";
         public const string SOUND_OVER = "./Assets/Halo_End.wav";
 
         // public const int BULLET_X = MAX_X / 2;

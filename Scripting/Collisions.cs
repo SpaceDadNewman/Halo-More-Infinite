@@ -52,7 +52,7 @@ namespace cse210_project
                 cast["grunts"].Remove(Grunt);
             }
             //bullets
-            foreach (Bullet EnemyBullet in _enemyBullets)
+            foreach (EnemyBullet EnemyBullet in _enemyBullets)
             {
                 if (EnemyBullet.GetPosition().GetX() <= 0 + Constants.ENEMYBULLET_WIDTH || 
                 EnemyBullet.GetPosition().GetX() >= Constants.MAX_X - Constants.ENEMYBULLET_WIDTH)

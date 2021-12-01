@@ -44,7 +44,7 @@ namespace cse210_project
                 //enemies shooting
                 if (_outputservice.EnemyShoot())
                 {
-                    _cast["enemyBullets"].Add(new Bullet(_cast["grunts"][0].GetX(),_cast["grunts"][0].GetX() - Constants.GRUNT_WIDTH));
+                    _cast["enemyBullets"].Add(new EnemyBullet(_cast["grunts"][0].GetX(),_cast["grunts"][0].GetY() - Constants.GRUNT_WIDTH));
                 }
                 CueAction("input");
                 CueAction("update");
