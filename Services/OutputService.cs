@@ -152,7 +152,10 @@ namespace cse210_project.Services
                 DrawActor(actor);
             }
         }
-
+        public bool EnemyShoot()
+        {
+            return true;
+        }
     }
 
 }

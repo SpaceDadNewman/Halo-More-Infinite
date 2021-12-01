@@ -18,16 +18,17 @@ namespace cse210_project
         public const string IMAGE_GRUNT = "./Assets/grunt.png";
         public const string IMAGE_CHIEF = "./Assets/master_chief.png";
         public const string IMAGE_BULLET = "./Assets/nerf.png";
+        public const string IMAGE_ENEMYBULLET = "./Assets/nerf_enemy.png";
 
         public const string SOUND_START = "./Assets/Halo_Start.wav";
-        public const string SOUND_BOUNCE = "./Assets/boing.wav";
+        public const string SOUND_SHOOT = "./Assets/boing.wav";
         public const string SOUND_OVER = "./Assets/Halo_End.wav";
 
-        public const int BULLET_X = MAX_X / 2;
-        public const int BULLET_Y = MAX_Y - 125;
+        // public const int BULLET_X = MAX_X / 2;
+        // public const int BULLET_Y = MAX_Y - 125;
 
-        public const int BULLET_DX = 8;
-        public const int BULLET_DY = BULLET_DX * -1;
+        // public const int BULLET_DX = 8;
+        // public const int BULLET_DY = BULLET_DX * -1;
 
         public const int CHIEF_X = MAX_X / 2;
         public const int CHIEF_Y = MAX_Y - 25;
@@ -44,6 +45,8 @@ namespace cse210_project
 
         public const int BULLET_WIDTH = 77;
         public const int BULLET_HEIGHT = 14;
+        public const int ENEMYBULLET_WIDTH = 77;
+        public const int ENEMYBULLET_HEIGHT = 14;
     }
 
 }

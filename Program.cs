@@ -23,12 +23,13 @@ namespace cse210_project
                 for(int columns = 0; columns < Constants.MAX_Y; columns += Constants.GRUNT_HEIGHT + 10)
                 {
                     // cast["grunts"].Add(new Grunt(Constants.MAX_X - Constants.GRUNT_WIDTH, Constants.GRUNT_HEIGHT));
-                    cast["grunts"].Add(new Grunt(columns, rows * Constants.GRUNT_HEIGHT));
+                    cast["grunts"].Add(new Grunt(columns - 20, rows * Constants.GRUNT_HEIGHT));
                 }
             }
 
-            // The Ball (or balls if desired)
+            // bullets
             cast["bullets"] = new List<Actor>();
+            cast["enemyBullets"] = new List<Actor>();
 
             // initial bullet spawn
             // cast["bullets"].Add(new Bullet(25, Constants.MAX_Y / 2));

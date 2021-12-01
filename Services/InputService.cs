@@ -35,7 +35,7 @@ namespace cse210_project.Services
 
         public bool IsSpacePressed()
         {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_SPACE);
+            return Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.KEY_SPACE);
         }
 
         /// <summary>
@@ -46,16 +46,6 @@ namespace cse210_project.Services
         {
             int x = 0;
             int y = 0;
-
-            // if (IsLeftPressed())
-            // {
-            //     x = -1;
-            // }
-
-            // if (IsRightPressed())
-            // {
-            //     x = 1;
-            // }
             
             if (IsUpPressed())
             {

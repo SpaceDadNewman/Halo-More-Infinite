@@ -20,6 +20,7 @@ namespace cse210_project
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
         private InputService _inputservice = new InputService();
+        private OutputService _outputservice = new OutputService();
 
         public Director(Dictionary<string, List<Actor>> cast, Dictionary<string, List<Action>> script)
         {
@@ -34,9 +35,16 @@ namespace cse210_project
         {
             while (_keepPlaying)
            {
+                //master chief shooting
                 if (_inputservice.Shoot())
                 {
-                    _cast["bullets"].Add(new Bullet(_cast["MasterChief"][0].GetX(),_cast["MasterChief"][0].GetY()));
+                    audioService.PlaySound(Constants.SOUND_SHOOT);
+                    _cast["bullets"].Add(new Bullet(_cast["MasterChief"][0].GetX(),_cast["MasterChief"][0].GetY() + 10));
+                }
+                //enemies shooting
+                if (_outputservice.EnemyShoot())
+                {
+                    _cast["enemyBullets"].Add(new Bullet(_cast["grunts"][0].GetX(),_cast["grunts"][0].GetX() - Constants.GRUNT_WIDTH));
                 }
                 CueAction("input");
                 CueAction("update");
@@ -51,9 +59,12 @@ namespace cse210_project
                     audioService.PlaySound(Constants.SOUND_OVER);
                     _keepPlaying = false;
                 }
+                // if (Collisions.DeadChief == true)
+                // {
+                //     audioService.PlaySound(Constants.SOUND_OVER);
+                //     _keepPlaying = false;
+                // }
             }
-
-            Console.WriteLine("Game over!");
         }
 
         /// <summary>
