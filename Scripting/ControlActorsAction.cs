@@ -23,7 +23,7 @@ namespace cse210_project.Scripting
             
             Actor robot = cast["MasterChief"][0];
 
-            Point velocity = direction.Scale(Constants.PADDLE_SPEED);
+            Point velocity = direction.Scale(Constants.CHIEF_SPEED);
             robot.SetVelocity(velocity);
         }
         

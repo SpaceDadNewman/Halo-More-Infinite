@@ -12,7 +12,7 @@ namespace cse210_project
             SetImage(Constants.IMAGE_BULLET);
             SetWidth(Constants.BULLET_WIDTH);
             SetHeight(Constants.BULLET_HEIGHT);
-            SetVelocity(new Point(5,0));
+            SetVelocity(new Point(20,0));
         }
     }
 }

@@ -33,11 +33,11 @@ namespace cse210_project
                         DeadGrunts.Add(Grunt);
                     }
                 // moves grunts up and down
-                    if (Grunt.GetBottomEdge() >= Constants.MAX_Y)
+                    if (Grunt.GetBottomEdge() >= Constants.MAX_Y - Constants.GRUNT_HEIGHT)
                     {
                         BounceActorsY(Grunt);
                     }
-                    if (Grunt.GetTopEdge() <= 0)
+                    if (Grunt.GetTopEdge() <= 0 - Constants.GRUNT_HEIGHT)
                     {
                         BounceActorsY(Grunt);
                     }

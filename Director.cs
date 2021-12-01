@@ -46,14 +46,10 @@ namespace cse210_project
                 {
                     _keepPlaying = false;
                 }
-                // if (_cast["bullets"].Count == 0)
-                // {
-                //     _keepPlaying = false;
-                // }
                 if (_cast["grunts"].Count == 0)
                 {
-                    _keepPlaying = false;
                     audioService.PlaySound(Constants.SOUND_OVER);
+                    _keepPlaying = false;
                 }
             }
 

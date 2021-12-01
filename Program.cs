@@ -18,22 +18,23 @@ namespace cse210_project
             cast["grunts"] = new List<Actor>();
 
             // grunt spawning
-            for(int grunts = 0; grunts < 10; grunts ++)
+            for(int rows = 0; rows < 10; rows++)
             {
-                cast["grunts"].Add(new Grunt(Constants.MAX_X - Constants.GRUNT_WIDTH, Constants.GRUNT_HEIGHT));
+                for(int columns = 0; columns < Constants.MAX_Y; columns += Constants.GRUNT_HEIGHT + 10)
+                {
+                    // cast["grunts"].Add(new Grunt(Constants.MAX_X - Constants.GRUNT_WIDTH, Constants.GRUNT_HEIGHT));
+                    cast["grunts"].Add(new Grunt(columns, rows * Constants.GRUNT_HEIGHT));
+                }
             }
 
             // The Ball (or balls if desired)
             cast["bullets"] = new List<Actor>();
 
-            // TODO: Add your ball here
-            cast["bullets"].Add(new Bullet(25, Constants.MAX_Y / 2));
-            // cast["bullets"].Add(new Bullet(x,y));
+            // initial bullet spawn
+            // cast["bullets"].Add(new Bullet(25, Constants.MAX_Y / 2));
 
-            // The paddle
+            // masterchief
             cast["MasterChief"] = new List<Actor>();
-
-            // TODO: Add your paddle here
             cast["MasterChief"].Add(new MasterChief());
 
             // Create the script
@@ -62,7 +63,7 @@ namespace cse210_project
             script["update"].Add(controlActorsAction);
 
             // Start up the game
-            outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Batter", Constants.FRAME_RATE);
+            outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Tell that to the Covenant", Constants.FRAME_RATE);
             audioService.StartAudio();
             audioService.PlaySound(Constants.SOUND_START);
 
