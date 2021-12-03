@@ -14,16 +14,6 @@ namespace cse210_project.Services
         {
 
         }
-
-        // public bool IsLeftPressed()
-        // {
-        //     return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_LEFT);
-        // }
-
-        // public bool IsRightPressed()
-        // {
-        //     return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_RIGHT);
-        // }
         public bool IsUpPressed()
         {
             return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_UP);
@@ -35,7 +25,7 @@ namespace cse210_project.Services
 
         public bool IsSpacePressed()
         {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_SPACE);
+            return Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.KEY_SPACE);
         }
 
         /// <summary>
