@@ -42,10 +42,10 @@ namespace cse210_project
                     _cast["bullets"].Add(new Bullet(_cast["MasterChief"][0].GetX(),_cast["MasterChief"][0].GetY() + 10));
                 }
                 //enemies shooting
-                if (_outputservice.EnemyShoot())
-                {
-                    _cast["enemyBullets"].Add(new EnemyBullet(_cast["grunts"][0].GetX(),_cast["grunts"][0].GetY() - Constants.GRUNT_WIDTH));
-                }
+                // if (_outputservice.EnemyShoot())
+                // {
+                //     _cast["enemyBullets"].Add(new EnemyBullet(_cast["grunts"].GetX(),_cast["grunts"][0].GetY()));
+                // }
                 CueAction("input");
                 CueAction("update");
                 CueAction("output");

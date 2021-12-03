@@ -31,9 +31,6 @@ namespace cse210_project
             cast["bullets"] = new List<Actor>();
             cast["enemyBullets"] = new List<Actor>();
 
-            // initial bullet spawn
-            // cast["bullets"].Add(new Bullet(25, Constants.MAX_Y / 2));
-
             // masterchief
             cast["MasterChief"] = new List<Actor>();
             cast["MasterChief"].Add(new MasterChief());
