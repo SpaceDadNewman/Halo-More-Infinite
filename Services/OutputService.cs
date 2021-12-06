@@ -154,7 +154,14 @@ namespace cse210_project.Services
         }
         public bool EnemyShoot()
         {
-            return true;
+            if (Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.KEY_SPACE))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 

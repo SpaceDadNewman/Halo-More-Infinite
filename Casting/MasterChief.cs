@@ -4,7 +4,6 @@ using cse210_project.Casting;
 
 namespace cse210_project
 {
-    //was the CHIEF class
     class MasterChief : Actor
     {
         public MasterChief()

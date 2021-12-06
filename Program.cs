@@ -20,10 +20,19 @@ namespace cse210_project
             // grunt spawning
             for(int rows = 0; rows < 10; rows++)
             {
-                for(int columns = 0; columns < Constants.MAX_X; columns += (Constants.GRUNT_HEIGHT + 10))
+                for(int columns = 0; columns < Constants.MAX_X; columns += (Constants.GRUNT_HEIGHT + 50))
                 {
-                    // cast["grunts"].Add(new Grunt(Constants.MAX_X - Constants.GRUNT_WIDTH, Constants.GRUNT_HEIGHT));
                     cast["grunts"].Add(new Grunt(columns, rows * Constants.GRUNT_HEIGHT));
+                }
+            }
+
+            //elites
+            cast["elites"] = new List<Actor>();
+            for(int rows = 0; rows < 5; rows++)
+            {
+                for(int columns = 0; columns < Constants.MAX_X; columns += (Constants.ELITE_HEIGHT + 10))
+                {
+                    cast["elites"].Add(new Elite(columns, rows * Constants.ELITE_HEIGHT));
                 }
             }
 

@@ -8,7 +8,7 @@ namespace cse210_project
     {
         public Grunt(int x, int y)
         {
-            SetPosition(new Point(Constants.MAX_X - Constants.GRUNT_WIDTH - 5,y));
+            SetPosition(new Point(Constants.MAX_X - Constants.GRUNT_WIDTH - 100,y));
             SetImage(Constants.IMAGE_GRUNT);
             SetWidth(Constants.GRUNT_WIDTH);
             SetHeight(Constants.GRUNT_HEIGHT);

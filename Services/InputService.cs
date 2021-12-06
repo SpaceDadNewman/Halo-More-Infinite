@@ -20,7 +20,7 @@ namespace cse210_project.Services
         }
         public bool IsDownPressed()
         {
-            return Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.KEY_DOWN);
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_DOWN);
         }
 
         public bool IsSpacePressed()

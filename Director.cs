@@ -40,11 +40,12 @@ namespace cse210_project
                 {
                     audioService.PlaySound(Constants.SOUND_SHOOT);
                     _cast["bullets"].Add(new Bullet(_cast["MasterChief"][0].GetX(),_cast["MasterChief"][0].GetY() + 10));
+                    // _cast["enemyBullets"].Add(new EnemyBullet(_cast["grunts"][5].GetX() - 50,_cast["grunts"][5].GetY()));
                 }
                 //enemies shooting
                 // if (_outputservice.EnemyShoot())
                 // {
-                //     _cast["enemyBullets"].Add(new EnemyBullet(_cast["grunts"].GetX(),_cast["grunts"][0].GetY()));
+                //     _cast["enemyBullets"].Add(new EnemyBullet(_cast["grunts"][0].GetX() - 50,_cast["grunts"][0].GetY()));
                 // }
                 CueAction("input");
                 CueAction("update");
@@ -54,7 +55,7 @@ namespace cse210_project
                 {
                     _keepPlaying = false;
                 }
-                if (_cast["grunts"].Count == 0)
+                if (_cast["grunts"].Count == 0 && _cast["elites"].Count == 0)
                 {
                     audioService.PlaySound(Constants.SOUND_OVER);
                     _keepPlaying = false;

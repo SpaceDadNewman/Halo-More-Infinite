@@ -10,6 +10,7 @@ namespace cse210_project
         private List<Actor> _bullets;
         private List<Actor> _enemyBullets;
         private List<Actor> _masterchief;
+        private List<Actor> _elites;
         private PhysicsService _physicsService;
         AudioService audioService = new AudioService();
         // private bool DeadChief;
@@ -23,11 +24,15 @@ namespace cse210_project
             _bullets = cast["bullets"];
             _enemyBullets = cast["enemyBullets"];
             _masterchief = cast["MasterChief"];
+            _elites = cast["elites"];
             List<Actor> DeadGrunts = new List<Actor>();
             List<Actor> UsedBullets = new List<Actor>();
+            List<Actor> DeadElites = new List<Actor>();
+            // List<Actor> DamagedElites = new List<Actor>();
+            // bool HitElite = false;
             // DeadChief = false;
 
-            //when bullet hits
+            //grunt collisions
             foreach (Actor Grunt in _grunts)
             {
                 foreach (Actor Bullet in _bullets)
@@ -35,6 +40,8 @@ namespace cse210_project
                     if (_physicsService.IsCollision(Bullet, Grunt))
                     {
                         DeadGrunts.Add(Grunt);
+                        UsedBullets.Add(Bullet);
+                        audioService.PlaySound(Constants.SOUND_DAMAGE);
                     }
                 // moves grunts up and down
                     if (Grunt.GetBottomEdge() >= Constants.MAX_Y - Constants.GRUNT_HEIGHT)
@@ -45,11 +52,49 @@ namespace cse210_project
                     {
                         BounceActorsY(Grunt);
                     }
+                    if (_physicsService.IsCollision(Grunt, Grunt))
+                    {
+                        BounceActorsY(Grunt);
+                    }
+                }
+            }
+            //elite collisions
+            foreach (Elite Elite in _elites)
+            {
+                foreach (Actor Bullet in _bullets)
+                {
+                    if (_physicsService.IsCollision(Bullet, Elite))
+                    {
+                       Elite.IsHit();
+                       UsedBullets.Add(Bullet);
+                       if (Elite.IsDead())
+                       {
+                           DeadElites.Add(Elite);
+                       }
+                       audioService.PlaySound(Constants.SOUND_DAMAGE);
+                    }
+                // moves elites up and down
+                    if (Elite.GetBottomEdge() >= Constants.MAX_Y - Constants.ELITE_HEIGHT)
+                    {
+                        BounceActorsY(Elite);
+                    }
+                    if (Elite.GetTopEdge() <= 0 - Constants.ELITE_HEIGHT)
+                    {
+                        BounceActorsY(Elite);
+                    }
+                    if (_physicsService.IsCollision(Elite, Elite))
+                    {
+                        BounceActorsY(Elite);
+                    }
                 }
             }
             foreach (Actor Grunt in DeadGrunts)
             {
                 cast["grunts"].Remove(Grunt);
+            }
+            foreach (Actor Elite in DeadElites)
+            {
+                cast["elites"].Remove(Elite);
             }
             //bullets
             foreach (EnemyBullet EnemyBullet in _enemyBullets)
@@ -78,13 +123,13 @@ namespace cse210_project
                     }
                 }
                 //master chief hitting the top and bottom
-                if (MasterChief.GetBottomEdge() >= Constants.MAX_Y - Constants.CHIEF_HEIGHT)
+                if (MasterChief.GetBottomEdge() >= Constants.MAX_Y - 15)
                 {
-                    StopActors(MasterChief);
+                    MasterChief.SetPosition(new Point(MasterChief.GetPosition().GetX(), Constants.MAX_Y - Constants.CHIEF_HEIGHT - 15));
                 }
-                if (MasterChief.GetTopEdge() <= 0 + Constants.CHIEF_HEIGHT)
+                if (MasterChief.GetTopEdge() <= 15)
                 {
-                    StopActors(MasterChief);
+                    MasterChief.SetPosition(new Point(MasterChief.GetPosition().GetX(), 15));
                 }
 
             }
@@ -104,15 +149,6 @@ namespace cse210_project
                 int y = actor.GetVelocity().GetY();
                 y *= -1;
                 actor.SetVelocity(new Point(x,y));
-            }
-            private void StopActors(Actor actor)
-            {
-                int x = actor.GetVelocity().GetX();
-                int y = actor.GetVelocity().GetY();
-                x = 0;
-                y = 0;
-                actor.SetVelocity(new Point(x,y));
-            }
-        
+            }        
     }
 }
