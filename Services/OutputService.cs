@@ -152,17 +152,6 @@ namespace cse210_project.Services
                 DrawActor(actor);
             }
         }
-        public bool EnemyShoot()
-        {
-            if (Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.KEY_SPACE))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 
 }

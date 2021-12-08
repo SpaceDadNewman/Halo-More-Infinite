@@ -63,11 +63,14 @@ namespace cse210_project
             MoveActorsAction moveActorsAction = new MoveActorsAction();
             script["update"].Add(moveActorsAction);
 
-            Collisions collisions = new Collisions(physicsService);
-            script["update"].Add(collisions);
-
             ControlActorsAction controlActorsAction = new ControlActorsAction(inputService);
             script["update"].Add(controlActorsAction);
+            
+            Shoot shoot = new Shoot(inputService, audioService);
+            script["update"].Add(shoot);
+
+            Collisions collisions = new Collisions(physicsService);
+            script["update"].Add(collisions);
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Tell that to the Covenant", Constants.FRAME_RATE);

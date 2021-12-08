@@ -6,7 +6,7 @@ namespace cse210_project
 {
     class Elite : Actor
     {
-        private int Health = 5;
+        private int EliteHealth = 5;
         public Elite(int x, int y)
         {
             SetPosition(new Point(Constants.MAX_X - Constants.ELITE_WIDTH - 5,y));
@@ -15,13 +15,13 @@ namespace cse210_project
             SetHeight(Constants.ELITE_HEIGHT);
             SetVelocity(new Point(0,5));
         }
-        public void IsHit()
+        public void EliteIsHit()
         {
-            Health -= 1;
+            EliteHealth -= 1;
         }
-        public bool IsDead()
+        public bool EliteIsDead()
         {
-            if (Health == 0)
+            if (EliteHealth == 0)
             {
                 return true;
             }

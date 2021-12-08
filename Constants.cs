@@ -25,6 +25,7 @@ namespace cse210_project
         public const string SOUND_SHOOT = "./Assets/pew.wav";
         public const string SOUND_OVER = "./Assets/Halo_End.wav";
         public const string SOUND_DAMAGE = "./Assets/damage.wav";
+        public const string SOUND_CHIEFDAMAGE = "./Assets/ChiefisHit.wav";
 
         public const int CHIEF_X = MAX_X / 2;
         public const int CHIEF_Y = MAX_Y - 25;
