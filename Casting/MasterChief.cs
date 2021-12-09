@@ -6,7 +6,7 @@ namespace cse210_project
 {
     class MasterChief : Actor
     {
-        private int ChiefHealth = 10;
+        private int ChiefHealth = 5;
         public MasterChief()
         {
             SetPosition(new Point(25, Constants.MAX_Y / 2));
