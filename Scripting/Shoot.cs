@@ -11,7 +11,7 @@ namespace cse210_project.Scripting
         InputService _inputService;
         int _count = 0;
         public Shoot(InputService inputService, AudioService audioService)
-        {
+        { 
             _inputService = inputService;
             _audioService = audioService;
         }
